@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>гойда</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Немного стилей для полезных ссылок внутри сайдбара */
+    .links-container {
+      margin-top: 30px; /* отступ сверху для блока */
+    }
+
+    .links-title {
+      font-family: 'MinecraftRus', monospace;
+      font-size: 24px;
+      color: #d8b7ff;
+      margin-bottom: 16px;
+      user-select: none;
+    }
+
+    .links-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: flex-start;
+    }
+
+    .link-button {
+      width: 80px;
+      height: 80px;
+      border: 2px solid white;
+      border-radius: 12px;
+      background-color: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .link-button:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      transform: scale(1.1);
+    }
+
+    .link-icon {
+      width: 60%;
+      height: 60%;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+  <div class="undertale-text" id="undertale-text"></div>
+
+  <div class="character-wrapper">
+    <img src="img/camp.png" alt="Персонаж" class="img" />
+    <div id="random-text" class="speech-bubble"></div>
+  </div>
+  <div id="splash" class="splash-text"></div>
+
+  <div class="sidebar">
+    <h2 class="obs">Обо мне</h2>
+    <p>
+      Я <strong>FL0WER0K</strong> — активный игрок <strong>"SPm"</strong>, ранее игравший на старом добром <strong>SPworlds</strong>.<br /><br />
+      Занимаюсь рендерами в <strong>Blender</strong>, имею опыт создания скинов и моделей в <strong>BlockBench</strong>.<br /><br />
+      Но всё же опыта в Blender у меня больше, всегда рад выполнить интересные заказы.
+    </p>
+
+    <div class="links-container">
+      <p class="links-title">Полезные ссылки</p>
+<div class="links-buttons">
+  <a href="https://t.me/idkrenders" target="_blank" rel="noopener" class="link-button" data-tooltip="Render канал">
+    <img src="img/tg.png" alt="Иконка 1" class="link-icon" />
+  </a>
+  <a href="https://t.me/Flower0k" target="_blank" rel="noopener" class="link-button" data-tooltip="Щитпост">
+    <img src="img/hp.png" alt="Иконка 2" class="link-icon" />
+  </a>
+  <a href="https://ru.namemc.com/profile/FL0WER0K" target="_blank" rel="noopener" class="link-button" data-tooltip="Профиль NameMC">
+    <img src="img/FL0WER0K.png" alt="Иконка 3" class="link-icon" />
+  </a>
+</div>
+</a>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

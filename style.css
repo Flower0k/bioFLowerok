@@ -1,0 +1,219 @@
+ /* Подключаем локальный Minecraft шрифт */
+  @font-face {
+    font-family: 'MinecraftRus';
+    src: url('fonts/minecraft.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+.img {
+  width: 1200px;
+  height: auto;         /* пример */
+  opacity: 0;
+  transform: scale(0.95);
+  animation: fadeInScale 1s ease forwards;
+  position: relative;   /* если надо */
+  left: -250px;
+  top: 50px;
+}
+
+@keyframes fadeInScale {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+body {
+  margin: 0;
+  background: #111;
+  color: white;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Сайдбар */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -400px; /* Спрятан за экраном */
+  width: 400px;
+  height: 100vh;
+  background-color: #0a0512;
+  padding: 30px;
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.6);
+  animation: slideInFromRight 1s ease-out forwards;
+  z-index: 999;
+  overflow-y: auto;
+  opacity: 0;
+}
+
+/* Анимация */
+@keyframes slideInFromRight {
+  to {
+    right: 0;
+    opacity: 1;
+  }
+}
+
+/* Стили для текста */
+.sidebar h2 {
+  font-size: 28px;
+  color: #8552d8;
+  margin: 0 0 20px;
+  border-bottom: 2px solid white;
+  padding-bottom: 10px;
+}
+
+.sidebar p {
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.speech-bubble {
+  position: absolute;
+  top: 150px;        /* отступ сверху */
+  left: 350px;       /* отступ слева */
+  font-size: 20px;
+  font-family: Arial, sans-serif;
+  color: #8035a5;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+  transform: rotate(40deg);
+  border-bottom: solid #8b4706;
+}
+
+.splash-text {     
+    font-family: 'MinecraftRus', monospace;
+    font-size: 20px;
+    color: white;
+    background: rgba(0, 0, 0, 0);
+    padding: 12px 24px;  
+    white-space: nowrap;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    position: fixed;
+
+    left: 10px;  /* Можно изменить для позиционирования */
+    z-index: 9999;
+    user-select: text;
+  }
+
+.links-container {
+  position: absolute;
+  bottom: 80px;           /* было top: 90%, теперь bottom для контроля */
+  left: 50%;              /* по центру */
+  transform: translateX(-50%); /* убираем Y-смещение */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+
+.links-title {
+  font-family: 'MinecraftRus', monospace;
+  font-size: 24px;
+  color: #d8b7ff;
+  margin-bottom: 16px;
+  user-select: none;
+}
+
+.links-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-start;
+}
+
+.link-button {
+  width: 80px;
+  height: 80px;
+  border: 2px solid white;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+}
+
+.link-button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: scale(1.1);
+}
+
+.link-icon {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.undertale-text {
+  position: absolute;
+  top: 3%;                
+  left: 1%;
+  font-family: 'MinecraftRus', monospace; /* поменял шрифт */
+  font-size: 32px;
+  color: #ffff33;
+  text-shadow:
+    0 0 3px orange,
+    0 0 6px #ffffff;
+  white-space: pre-wrap;
+  max-width: 90%;
+  line-height: 1.5;
+}
+
+.sidebar p,
+.sidebar h2 {
+    font-family: 'MinecraftRus', monospace;
+}
+
+.link-button {
+  position: relative; /* для позиционирования тултипа */
+  /* остальные стили твоих кнопок */
+}
+
+.link-button::after {
+  content: attr(data-tooltip);  /* берём текст из атрибута */
+  position: absolute;
+  bottom: 100%;    /* над кнопкой */
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  font-size: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 10;
+}
+
+/* маленькая стрелочка */
+.link-button::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+.link-button:hover::after,
+.link-button:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-12px);
+  pointer-events: auto;
+}
